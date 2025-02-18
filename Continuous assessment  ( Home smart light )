@@ -2,54 +2,36 @@
 
 class SmartLight {
 public:
-    // Declare static variable
     static int defaultBrightness;
-
-    // Constructor
     SmartLight() {
-        brightness = SmartLight::defaultBrightness; // Use class name to access static member
+        brightness = SmartLight::defaultBrightness; 
     }
-
-    // Static method to modify default brightness
     static void setDefaultBrightness(int new_brightness) {
-        SmartLight::defaultBrightness = new_brightness; // Use class name
+        SmartLight::defaultBrightness = new_brightness; 
     }
 
     // Instance method to update brightness
     void updateBrightness() {
-        brightness = SmartLight::defaultBrightness; // Use class name
+        brightness = SmartLight::defaultBrightness; 
     }
-
-    // Display method
     void display() const {
         std::cout << "SmartLight brightness: " << brightness << std::endl;
     }
-
 private:
     int brightness;
 };
-
-// Define and initialize static member outside the class
 int SmartLight::defaultBrightness = 50;
-
 int main() {
     SmartLight light1;
     SmartLight light2;
     
     light1.display();  // Output: SmartLight brightness: 50
     light2.display();  // Output: SmartLight brightness: 50
-
-    // Change default brightness
     SmartLight::setDefaultBrightness(75);
-
-    // Update existing lights to follow new default brightness
     light1.updateBrightness();
     light2.updateBrightness();
-    
     light1.display();  // Output: SmartLight brightness: 75
     light2.display();  // Output: SmartLight brightness: 75
-
-    // New instance follows updated default brightness
     SmartLight light3;
     light3.display();  // Output: SmartLight brightness: 75
 
